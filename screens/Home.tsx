@@ -23,6 +23,7 @@ const Home = ({ navigation }) => {
 
   return (
     <Layout style={styles.container}>
+      <View style={{ maxWidth: 420, marginHorizontal: 'auto' }}>
       <FormHeader />
       <View style={styles.formContainer}>
         <Controller
@@ -93,6 +94,7 @@ const Home = ({ navigation }) => {
         </Text>
         .
       </Text>
+      </View>
     </Layout>
   )
 };
