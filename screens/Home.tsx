@@ -35,7 +35,7 @@ const Home = ({ navigation }) => {
               status={error ? 'danger' : 'primary'}
               multiline={true}
               style={styles.input}
-              textStyle={{ minHeight: 200 }}
+              textStyle={{ minHeight: 200, outlineStyle: 'none', }}
               placeholder='Dear...'
             />
           )}
@@ -63,8 +63,10 @@ const Home = ({ navigation }) => {
           render={({ field, fieldState: { error }  }) => (
             <Input
               {...field}
+              onFocus={() => { field.onBlur(); }}
               status={error ? 'danger' : 'primary'}
               style={styles.input}
+              textStyle={{ width: '100%', outlineStyle: 'none', }}
               size='large'
               placeholder='Your e-mail'
             />
@@ -72,7 +74,6 @@ const Home = ({ navigation }) => {
         />
 
         <Captcha onVerify={(token, ekey) => console.log(token, ekey)} />
-        
         <Button onPress={handleSubmit(onSubmit)}>
           Send
         </Button>
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   formContainer: {
     width: '100%',
