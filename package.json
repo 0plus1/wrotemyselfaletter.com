@@ -12,7 +12,9 @@
   "dependencies": {
     "@eva-design/eva": "^2.1.1",
     "@expo-google-fonts/gochi-hand": "^0.2.2",
+    "@hcaptcha/react-hcaptcha": "^1.4.4",
     "@ui-kitten/components": "^5.1.2",
+    "dotenv": "^16.0.1",
     "expo": "~45.0.0",
     "expo-app-loading": "~2.0.0",
     "expo-font": "~10.1.0",
