@@ -5,7 +5,7 @@ export default ({ config }) => {
   return {
     ...config,
     extra: {
-      hCaptchaEnabled: process.env.HCAPTCHA_ENABLED,
+      hCaptchaEnabled: process.env.HCAPTCHA_ENABLED === 'true',
       hCaptchaSiteKey: process.env.HCAPTCHA_SITE_KEY,
     },
   };
