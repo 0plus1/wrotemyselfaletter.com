@@ -1,15 +1,12 @@
-import { View, StyleSheet } from 'react-native';
-import { Text } from '@ui-kitten/components';
+import { View, StyleSheet, Image } from 'react-native';
 
 const FormHeader = () => {
   return (
     <View style={styles.titleContainer}>
-      <Text style={styles.title} category='h1'>
-        Write yourself a letter
-      </Text>
-      <Text style={styles.subTitle} category='h6'>
-        Something to say to your future self
-      </Text>
+      <Image
+        style={styles.logo}
+        source={require('../assets/logo.png')}
+      />
     </View>
   )
 };
@@ -21,12 +18,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  title: {
-    fontFamily: 'GochiHand_400Regular', 
-    fontSize: 30,
-  },
-  subTitle: {
-    fontSize: 10,
+  logo: {
+    width: 300,
+    height: 100,
   }
 });
 
