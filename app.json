@@ -27,7 +27,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.jpeg",
+      "favicon": "./assets/favicon.png",
       "build": { "babel": { "include": [ "@ui-kitten/components" ] } }
     }
   }
