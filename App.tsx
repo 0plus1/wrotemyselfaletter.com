@@ -11,6 +11,7 @@ import HomeScreen from './screens/Home';
 import TermsScreen from './screens/Terms';
 import PrivacyScreen from './screens/Privacy';
 import APIError from './screens/APIError';
+import VerifyEmailSuccess from './screens/VerifyEmailSuccess';
 
 const Stack = createNativeStackNavigator();
 
