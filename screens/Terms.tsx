@@ -33,7 +33,7 @@ const Terms = ({ SUPPORT_EMAIL }) => {
 };
 
 Terms.defaultProps = {
-  SUPPORT_EMAIL: Constants.manifest.extra.supportEmail,
+  SUPPORT_EMAIL: process.env.SUPPORT_EMAIL,
 };
 
 const styles = StyleSheet.create({

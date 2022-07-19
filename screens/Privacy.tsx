@@ -30,8 +30,8 @@ const Privacy = ({ SITE_URL, GITHUB_URL }) => {
 };
 
 Privacy.defaultProps = {
-  SITE_URL: Constants.manifest.extra.siteUrl,
-  GITHUB_URL: Constants.manifest.extra.githubUrl,
+  SITE_URL: process.env.SITE_URL,
+  GITHUB_URL: process.env.GITHUB_URL,
 };
 
 const styles = StyleSheet.create({

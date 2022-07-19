@@ -18,8 +18,8 @@ const Captcha = ({ onVerify, hCaptchaEnabled, hCaptchaSiteKey}) => {
 };
 
 Captcha.defaultProps = {
-  hCaptchaEnabled: Constants.manifest.extra.hCaptchaEnabled,
-  hCaptchaSiteKey: Constants.manifest.extra.hCaptchaSiteKey,
+  hCaptchaEnabled: (process.env.HCAPTCHA_ENABLED === 'true'),
+  hCaptchaSiteKey: process.env.HCAPTCHA_SITE_KEY,
 };
 
 const styles = StyleSheet.create({
