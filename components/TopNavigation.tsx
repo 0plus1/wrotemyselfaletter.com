@@ -12,7 +12,7 @@ const BackAction = ({ navigation }) => (
 const TopNavigation = ({ navigation }) => (
   <KittenTopNavigation
     accessoryLeft={<BackAction navigation={navigation} />}
-    title='Home'
+    title='Back'
   />
 );
 
