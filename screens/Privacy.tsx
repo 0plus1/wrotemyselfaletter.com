@@ -9,7 +9,7 @@ const Privacy = ({ SITE_URL, GITHUB_URL }) => {
         Privacy Policy
       </Text>
       <Text category="p1" style={styles.text}>
-        {SITE_URL} runs on AWS instances following very strict security guidelines including but not limited to MFA, encryption at rest, rotating key-pairs. Every change in the infrastructure will be discosed in this policy as soon as possible.
+        {SITE_URL} backend on AWS instances following very strict security guidelines including but not limited to MFA, encryption at rest, rotating key-pairs. Every change in the infrastructure will be discosed in this policy as soon as possible.
         Every page is served through SSL.
       </Text>
       <Text category="s1" style={styles.text}>

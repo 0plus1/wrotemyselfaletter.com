@@ -14,7 +14,7 @@ const FormFooter = ({ date, navigation }: { date: Date }) => {
       {' '}
       and
       {' '}
-      <Text onPress={() => navigation.navigate('Terms')} category='c1' style={styles.textLink}>
+      <Text onPress={() => navigation.navigate('Privacy')} category='c1' style={styles.textLink}>
         privacy policy
       </Text>
       .

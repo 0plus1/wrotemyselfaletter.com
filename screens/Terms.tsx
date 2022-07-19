@@ -16,14 +16,13 @@ const Terms = ({ SUPPORT_EMAIL }) => {
       <Text category="p1" style={styles.text}>
         Your data will be backed up regularly, and the backups tested. The best possible effort will be made to ensure that your data is safe.
         If there is a significant outage, you will receive a full explanation of the circumstances and what measures will be taken to prevent a recurrence.
-        If the site ceases operation, you will receive an opportunity to download your stored data in JSON format.
       </Text>
       <Text category="s1" style={styles.text}>
         The best possible effort will be made to ensure that your email will be delivered in time. Aquí no hay garantía de nada.
       </Text>
       <Text category="p1" style={styles.text}>
         Any new features that affect privacy will be strictly opt-in.
-        You will be treated with respect and discretio.
+        You will be treated with respect and discretion.
       </Text>
       <Text category="p1" style={styles.text}>
         Last updated 14 July 2022
