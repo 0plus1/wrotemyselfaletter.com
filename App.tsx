@@ -10,6 +10,7 @@ import { default as theme } from './theme.json';
 import HomeScreen from './screens/Home';
 import TermsScreen from './screens/Terms';
 import PrivacyScreen from './screens/Privacy';
+import APIError from './screens/APIError';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ const config = {
     Home: '',
     Terms: 'terms',
     Privacy: 'privacy',
+    APIError: 'error',
   },
 };
 
@@ -39,6 +41,7 @@ export default () => {
             <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false, title: 'Send a letter to yourself'}}/>
             <Stack.Screen name="Terms" component={TermsScreen} options={{ header: TopNavigation }}/>
             <Stack.Screen name="Privacy" component={PrivacyScreen} options={{ header: TopNavigation }}/>
+            <Stack.Screen name="APIError" component={APIError} options={{ header: TopNavigation }}/>
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
