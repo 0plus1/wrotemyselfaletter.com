@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Layout, Input, Text } from '@ui-kitten/components';
 import { useForm, Controller } from 'react-hook-form'
@@ -6,94 +7,48 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import Captcha from '../components/Captcha';
 import Datepicker from '../components/Datepicker';
 import FormHeader from '../components/FormHeader';
+import { createLetter } from '../modules/API';
+import CreateLetterForm from '../components/CreateLetterForm';
+import SubmissionResult from '../components/SubmissionResult';
+import FormFooter from '../components/FormFooter';
 
 dayjs.extend(relativeTime);
 
 const Home = ({ navigation }) => {
-  const { control, handleSubmit, watch, formState: { errors } } = useForm({
-    defaultValues: {
-      date: dayjs().add(1, 'year').toDate(),
-      email: '',
-    },
-  });
+  const initialDate = dayjs().add(1, 'year').toDate();
+  const [date, setDate] = useState(initialDate);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionResult, setSubmissionResult] = useState(null);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = ({ letter, email, date }) => {
+    setIsSubmitting(true);
+    createLetter(email, letter, date)
+      .then((r) => {
+        const { data } = r;
+        const { success, message } = data;
+        if (success) {
+          setSubmissionResult(message);
+        }
+      })
+      .catch((e) => {
+        navigation.navigate('APIError', {
+          error: 'Could not create letter. Please try again later.',
+        });
+      });
   };
 
   return (
     <Layout style={styles.container}>
       <View style={{ maxWidth: 420, marginHorizontal: 'auto' }}>
       <FormHeader />
-      <View style={styles.formContainer}>
-        <Controller
-          name='letter'
-          rules={{ required: true }}
-          control={control}
-          render={({ field, fieldState: { error } }) => (
-            <Input
-              {...field}
-              status={error ? 'danger' : 'primary'}
-              multiline={true}
-              style={styles.input}
-              textStyle={{ minHeight: 200, outlineStyle: 'none', }}
-              placeholder='Dear...'
-            />
-          )}
-        />
-
-        <Controller
-          name='date'
-          control={control}
-          render={({ field: {onChange, onBlur, value, name }, fieldState: { error } }) => {
-            return (
-              <Datepicker
-                {...{ onChange, onBlur, value, name }}
-                date={value}
-                error={error}
-                setDate={(date) => { onChange(date); }}
-              />
-            );
-           }}
-        />
-
-        <Controller
-          name='email'
-          rules={{ required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i }}
-          control={control}
-          render={({ field, fieldState: { error }  }) => (
-            <Input
-              {...field}
-              onFocus={() => { field.onBlur(); }}
-              status={error ? 'danger' : 'primary'}
-              style={styles.input}
-              textStyle={{ width: '100%', outlineStyle: 'none', }}
-              size='large'
-              placeholder='Your e-mail'
-            />
-          )}
-        />
-
-        <Captcha onVerify={(token, ekey) => console.log(token, ekey)} />
-        <Button onPress={handleSubmit(onSubmit)}>
-          Send
-        </Button>
-      </View>
-      <Text category='c1' style={{ textAlign: 'center'}}>
-        After confirming your email address, you  will receive a letter on the {dayjs(watch('date')).format('DD MMMM YYYY')}.
-        By sending your letter, you agree to the
-        {' '}
-        <Text onPress={() => navigation.navigate('Terms') } category='c1' style={styles.textLink}>
-          terms of service
-        </Text>
-        {' '}
-        and
-        {' '}
-        <Text onPress={() => navigation.navigate('Terms') } category='c1' style={styles.textLink}>
-          privacy policy
-        </Text>
-        .
-      </Text>
+      {submissionResult ? (
+        <SubmissionResult result={submissionResult} onSendAnother={() => { setSubmissionResult(null); setIsSubmitting(false); }} />
+      ) : (
+        <>
+          <CreateLetterForm initialDate={initialDate} onSubmit={onSubmit} isSubmitting={isSubmitting} onDateChanged={(newDate: Date) => setDate(newDate)}/>
+          <FormFooter date={date} navigation={navigation} />
+        </>
+      )}
       </View>
     </Layout>
   )
@@ -112,9 +67,6 @@ const styles = StyleSheet.create({
   input: {
     marginBottom: 10,
   },
-  textLink: {
-    textDecorationLine: 'underline',
-  }
 });
 
 export default Home;
