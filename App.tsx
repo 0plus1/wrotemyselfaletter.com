@@ -31,9 +31,12 @@ export default () => {
     <>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
-        <NavigationContainer linking={linking}>
+        <NavigationContainer linking={linking} documentTitle={{
+            formatter: (options, route) => 
+              `Wrote myself a letter - ${options?.title ?? route?.name}`,
+          }}>
           <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false, }}/>
+            <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false, title: 'Send a letter to yourself'}}/>
             <Stack.Screen name="Terms" component={TermsScreen} options={{ header: TopNavigation }}/>
             <Stack.Screen name="Privacy" component={PrivacyScreen} options={{ header: TopNavigation }}/>
           </Stack.Navigator>
