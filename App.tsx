@@ -20,6 +20,7 @@ const config = {
     Terms: 'terms',
     Privacy: 'privacy',
     APIError: 'error',
+    VerifyEmailSuccess: 'verify-email-success',
   },
 };
 
@@ -42,6 +43,7 @@ export default () => {
             <Stack.Screen name="Terms" component={TermsScreen} options={{ header: TopNavigation }}/>
             <Stack.Screen name="Privacy" component={PrivacyScreen} options={{ header: TopNavigation }}/>
             <Stack.Screen name="APIError" component={APIError} options={{ header: TopNavigation }}/>
+            <Stack.Screen name="VerifyEmailSuccess" component={VerifyEmailSuccess} options={{ header: TopNavigation }}/>
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
