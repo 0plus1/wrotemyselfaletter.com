@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "jest --coverage=true --coverageReporters=cobertura"
   },
   "dependencies": {
     "@eva-design/eva": "^2.1.1",
