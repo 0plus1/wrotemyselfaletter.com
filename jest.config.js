@@ -10,10 +10,8 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ["json"],
   collectCoverageFrom: [
-    "**/*.{js,jsx}",
-    "!**/coverage/**",
-    "!**/node_modules/**",
-    "!**/babel.config.js",
-    "!**/jest.setup.js"
+    "**/screens/*.{js,jsx,ts,tsx}",
+    "**/modules/*.{js,jsx,ts,tsx}",
+    "**/components/*.{js,jsx,ts,tsx}",
   ]
 };
